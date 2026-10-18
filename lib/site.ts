@@ -8,8 +8,19 @@ export const ROLE_LINE = "COO, Nunn Corporation";
 export const ROLE_SECONDARY =
   "Founder, Algorithm Academy · Full-stack, Unity & Roblox";
 
+/** LinkedIn-style headline under the name */
+export const HEADLINE = `${ROLE_LINE} · ${ROLE_SECONDARY}`;
+
 export const TAGLINE =
-  "Operating Nunn Ops while building Algorithm Academy — learning software, creator tools, Unity games, and Roblox experiences through LifeLong Studios.";
+  "COO at Nunn Corporation (incl. proposed Nunn Applied Systems) and founder of Algorithm Academy — learning software, creator tools, Unity games, and Roblox experiences through LifeLong Studios.";
+
+export const LOCATION = "United States";
+
+export const INDUSTRY = "Software Development · Game Development";
+
+export const PROFILE_PHOTO_URL =
+  process.env.NEXT_PUBLIC_PROFILE_PHOTO_URL?.replace(/\/$/, "") ??
+  "https://avatars.githubusercontent.com/u/151668460?v=4";
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
@@ -63,11 +74,12 @@ export const nunnOpsRepoUrl =
   "https://github.com/TattooGamerGuy/Nunn-Applied-Systems";
 
 export const navItems: NavItem[] = [
-  { label: "Experience", href: "#experience" },
-  { label: "Work", href: "#work" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
   { label: "About", href: "#about" },
+  { label: "Featured", href: "#featured" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Licenses", href: "#licenses" },
+  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -78,7 +90,7 @@ export const defaultMetadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Freddie Neale — COO at Nunn Corporation and founder of Algorithm Academy. Full-stack web, Unity and Roblox development, and LifeLong Studios experiences.",
+    "Freddie Neale — COO at Nunn Corporation (proposed Nunn Applied Systems) and founder of Algorithm Academy. Full-stack web, Unity and Roblox, LifeLong Studios.",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

@@ -52,7 +52,12 @@ export type EducationEntry = {
   degree: string;
   institution: string;
   detail?: string;
+  summary?: string;
   coursework?: string[];
+  skills?: string[];
+  experience?: string[];
+  href?: string;
+  hrefLabel?: string;
 };
 
 export type CertificationEntry = {

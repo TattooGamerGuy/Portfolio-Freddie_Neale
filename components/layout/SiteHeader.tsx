@@ -1,66 +1,69 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { MenuIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/Container";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { SITE_NAME, navItems } from "@/lib/site";
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-40 border-b border-fn-line/70 bg-fn-bg/80 backdrop-blur-md">
-      <Container className="flex items-center justify-between gap-4 py-4">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-card/80 backdrop-blur-xl">
+      <Container className="flex items-center justify-between gap-4 py-3">
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight text-fn-ink sm:text-xl"
+          className="font-display text-lg font-bold tracking-tight text-foreground"
         >
           {SITE_NAME}
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center gap-1 lg:flex"
+          aria-label="Primary"
+        >
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="fn-nav-link font-display text-sm font-semibold text-fn-ink-muted"
-            >
-              {item.label}
-            </a>
+            <Button key={item.href} asChild variant="ghost" size="sm">
+              <a href={item.href}>{item.label}</a>
+            </Button>
           ))}
         </nav>
 
-        <button
-          type="button"
-          className="fn-cta inline-flex items-center rounded-md border border-fn-line px-3 py-2 font-display text-sm font-semibold text-fn-ink md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className="lg:hidden"
+              aria-label="Open menu"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right">
+            <SheetHeader>
+              <SheetTitle>Navigate</SheetTitle>
+            </SheetHeader>
+            <nav className="mt-4 flex flex-col gap-1" aria-label="Mobile">
+              {navItems.map((item) => (
+                <SheetClose asChild key={item.href}>
+                  <Button asChild variant="ghost" className="justify-start">
+                    <a href={item.href}>{item.label}</a>
+                  </Button>
+                </SheetClose>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
       </Container>
-
-      {open ? (
-        <nav
-          id="mobile-nav"
-          className="border-t border-fn-line bg-fn-bg-elevated md:hidden"
-          aria-label="Mobile"
-        >
-          <Container className="flex flex-col gap-1 py-3">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="fn-nav-link rounded-md px-2 py-2 font-display text-sm font-semibold text-fn-ink-muted"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </Container>
-        </nav>
-      ) : null}
     </header>
   );
 }

@@ -1,60 +1,72 @@
-import { Container } from "@/components/ui/Container";
+import { Badge } from "@/components/ui/badge";
+import { ProfileCard } from "@/components/profile/ProfileCard";
 import { academySiteUrl, lifeLongSiteUrl, nunnOpsRepoUrl } from "@/lib/site";
 
 export function AboutSection() {
   return (
-    <Container as="section" id="about" className="scroll-mt-24 py-20 sm:py-24">
-      <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        About
-      </p>
-      <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-        COO at Nunn. Founder of Algorithm Academy.
-      </h2>
-      <div className="mt-8 max-w-2xl space-y-5 text-base leading-relaxed text-muted-foreground">
+    <ProfileCard id="about" title="About">
+      <div className="space-y-3 text-[15px] leading-relaxed text-foreground">
         <p>
-          I operate the{" "}
+          As COO of Nunn Corporation I run{" "}
           <a
             href={nunnOpsRepoUrl}
-            className="font-semibold text-primary underline-offset-4 hover:underline"
+            className="font-semibold text-primary hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
             Nunn Ops
-          </a>{" "}
-          planning workspace as COO of Nunn Corporation — evidence-labeled
-          registries, gaps, and cadence. Executive, legal, and financial
-          decisions stay with the CEO. Nunn Applied Systems remains a proposed
-          subsidiary, not a live product or corporate filing.
+          </a>
+          — including co-founder and lead-developer work for proposed Nunn
+          Applied Systems: development operations, corporate infrastructure,
+          registries, and cadence. Executive, legal, and financial decisions
+          stay with the CEO. Applied Systems is not a formed entity or live
+          product.
         </p>
         <p>
-          In parallel I build{" "}
+          As founder of{" "}
           <a
             href={academySiteUrl}
-            className="font-semibold text-primary underline-offset-4 hover:underline"
+            className="font-semibold text-primary hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
             Algorithm Academy
           </a>
-          : learning software, a Developer Hub for creators, and games through{" "}
+          I cover CEO and COO duties as sole operator — strategy plus
+          development operations across the company hub, Online learning app,
+          Developer Hub,{" "}
           <a
             href={lifeLongSiteUrl}
-            className="font-semibold text-primary underline-offset-4 hover:underline"
+            className="font-semibold text-primary hover:underline"
             target="_blank"
             rel="noopener noreferrer"
           >
             LifeLong Studios
           </a>
-          — including Zombie Invasion on Roblox (Aether Hideout → Aether
-          Foundry).
+          , and Pyforge — including Zombie Invasion on Roblox (Aether Hideout →
+          Aether Foundry).
         </p>
         <p>
-          On the web side I work in Next.js, React, TypeScript, and Tailwind. On
-          the game side I prototype in Unity 6 and Roblox Studio with Luau, and
-          I ship jam games on itch.io. This portfolio ties those surfaces back
-          to me — use the Sentinel guide if you want a quick tour.
+          Stack focus: Next.js, React, TypeScript, Unity 6, and Roblox Luau.
+          Published jam games live on itch.io. Use the Sentinel guide for a
+          quick tour of this profile.
         </p>
       </div>
-    </Container>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {[
+          "Next.js",
+          "TypeScript",
+          "Unity",
+          "Roblox",
+          "Founder-operated",
+          "DevOps leadership",
+          "Corporate infrastructure",
+        ].map((skill) => (
+          <Badge key={skill} variant="secondary">
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </ProfileCard>
   );
 }

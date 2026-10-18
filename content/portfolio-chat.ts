@@ -11,21 +11,22 @@ export const portfolioChatAssistantLabel =
 
 export const portfolioChatGreeting = [
   "I am Sentinel Governed AI — your portfolio guide for Freddie Neale.",
-  "Ask about his role as COO at Nunn Corporation, Algorithm Academy, LifeLong Studios, Zombie Invasion, education, game jams, or how to navigate this site.",
+  "Ask about his COO duties at Nunn Corporation (development operations and corporate infrastructure), Algorithm Academy, LifeLong Studios, Zombie Invasion, education, game jams, or how to navigate this site.",
   portfolioChatAssistantLabel,
   "This is a scripted offline guide, not a company record or a production control plane.",
 ].join(" ");
 
 export const defaultSuggestions = [
   "What is Freddie's current role?",
+  "What are his COO duties?",
+  "What are his Algorithm Academy duties?",
   "Tell me about Nunn Corporation",
-  "What is Zombie Invasion?",
-  "Show game jams",
 ];
 
 export const fallbackLinks: ChatLink[] = [
+  { href: "#about", label: "About" },
+  { href: "#featured", label: "Featured" },
   { href: "#experience", label: "Experience" },
-  { href: "#work", label: "Work" },
   { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
 ];
@@ -42,7 +43,7 @@ export const chatTopics: ChatTopic[] = [
       "about me",
     ],
     reply:
-      "Freddie Neale is COO at Nunn Corporation and founder of Algorithm Academy. He builds full-stack learning products, Unity prototypes, and Roblox experiences through LifeLong Studios.",
+      "Freddie Neale is COO at Nunn Corporation — that seat includes co-founder and lead-developer work on proposed Nunn Applied Systems — and founder of Algorithm Academy, where he covers CEO and COO duties as sole operator. He runs Nunn Ops development operations and corporate infrastructure, and ships Algorithm Academy's full product house plus LifeLong Studios games.",
     links: [
       { href: "#about", label: "About" },
       { href: "#experience", label: "Experience" },
@@ -61,12 +62,35 @@ export const chatTopics: ChatTopic[] = [
       "headline",
     ],
     reply:
-      "Current title: COO, Nunn Corporation. Secondary: Founder of Algorithm Academy — full-stack, Unity, and Roblox. On Nunn work he runs the planning workspace; executive, legal, and financial decisions stay with the CEO.",
+      "Current titles: COO, Nunn Corporation (includes co-founder & lead developer of proposed Nunn Applied Systems — not a separate listing); Founder of Algorithm Academy (sole operator covering CEO and COO duties). On Nunn work, executive/legal/financial decisions stay with Nunn's CEO.",
     links: [
       { href: "#experience", label: "Experience" },
       { href: nunnOpsRepoUrl, label: "Nunn Ops on GitHub" },
     ],
     suggestion: "What is Freddie's current role?",
+  },
+  {
+    id: "coo-duties",
+    keywords: [
+      "coo duties",
+      "duties",
+      "responsibilities",
+      "what does the coo",
+      "development operations",
+      "corporate infrastructure",
+      "operating cadence",
+      "delegation",
+      "scorecard",
+      "what does he do as coo",
+    ],
+    reply:
+      "Under one COO seat at Nunn (including co-founder & lead developer of proposed Nunn Applied Systems) he runs development operations and corporate infrastructure. Charter workstreams: (1) executive operations — cadence forums, decision log, weekly CEO review packets; (2) portfolio and registry — evidence labels, spot checks, keep/change/stop; (3) people — role scorecards, hiring recommendations, onboarding packets; plus subsidiary procedures, compliance calendar, and document control. He recommends and implements; strategy, budget, entities, contracts/IP, public claims, and officer appointments stay with Nunn's CEO.",
+    links: [
+      { href: "#experience", label: "Experience" },
+      { href: nunnOpsRepoUrl, label: "Nunn Ops on GitHub" },
+      { href: "#skills", label: "Skills" },
+    ],
+    suggestion: "What are his COO duties?",
   },
   {
     id: "nunn",
@@ -75,11 +99,15 @@ export const chatTopics: ChatTopic[] = [
       "nunn corporation",
       "nunn ops",
       "nunn applied",
-      "acting coo",
+      "applied systems",
+      "co-founder",
+      "cofounder",
+      "lead developer",
+      "sole developer",
       "planning workspace",
     ],
     reply:
-      "Nunn Corporation is the parent context for Nunn Ops, a planning workspace Freddie operates as COO. Nunn Applied Systems is a proposed subsidiary — not formed and not a live product. The workspace is evidence-labeled and is not an authoritative corporate filing.",
+      "Nunn Corporation is the parent. Freddie is COO there; that role also covers co-founder and lead-developer work on Nunn Applied Systems — a proposed Arizona LLC subsidiary that is not formed (not listed as a separate job). Nunn Ops is the planning workspace he builds and runs: development operations and corporate infrastructure. Evidence-labeled; not a live product claim for the unformed subsidiary.",
     links: [
       { href: "#experience", label: "Experience" },
       { href: nunnOpsRepoUrl, label: "Nunn Ops repo" },
@@ -118,12 +146,32 @@ export const chatTopics: ChatTopic[] = [
       "dev hub",
     ],
     reply:
-      "Algorithm Academy is Freddie's parent product house: marketing hub, Online learning MVP (XP, streaks, hearts), Developer Hub creator suite, LifeLong Studios, and Pyforge. Open the Work section for each surface.",
+      "Algorithm Academy is Freddie's parent product house — he is founder and sole operator covering CEO and COO duties. He sets strategy and runs development operations across the company hub, Online learning MVP (XP, streaks, hearts), Developer Hub, LifeLong Studios, and Pyforge. Open Experience or Work for the full duty list and products.",
     links: [
+      { href: "#experience", label: "Experience" },
       { href: "#work", label: "Work" },
       { href: "#about", label: "About" },
     ],
     suggestion: "What is Algorithm Academy?",
+  },
+  {
+    id: "aa-duties",
+    keywords: [
+      "academy duties",
+      "algorithm academy duties",
+      "ceo and coo",
+      "ceo & coo",
+      "founder ceo",
+      "what does he do at algorithm",
+      "lifelong duties",
+    ],
+    reply:
+      "As founder of Algorithm Academy (covering CEO and COO duties as sole operator) he: (1) sets brand and product direction for the parent house and LifeLong Studios; (2) runs development operations across all Next.js apps (hub, Online, Dev Hub, LifeLong, Pyforge, portfolio); (3) ships Online learning and Developer Hub; (4) leads Unity and Roblox under LifeLong, including Zombie Invasion with IP-safe names; (5) gates marketing go-live until experiences are capture-ready.",
+    links: [
+      { href: "#experience", label: "Experience" },
+      { href: "#work", label: "Work" },
+    ],
+    suggestion: "What are his Algorithm Academy duties?",
   },
   {
     id: "lifelong",
@@ -188,13 +236,15 @@ export const chatTopics: ChatTopic[] = [
       "education",
       "degree",
       "school",
+      "study",
+      "studied",
       "full sail",
       "bachelor",
       "gpa",
       "university",
     ],
     reply:
-      "Freddie is pursuing / listing a B.S. in Web Development at Full Sail University with a self-stated 4.0 GPA. Coursework highlights include Interactive Media Design, Advanced JavaScript, Full Stack Web Development, and Database Structures.",
+      "Freddie is in Full Sail University's online B.S. in Web Development (project-based; self-stated 4.0 GPA). The program covers front-end (HTML/CSS/JS/React, UI/UX), server-side (Node/Express, APIs), databases (relational and MongoDB), cloud deployment, application security/SSO, CMS, data visualization, and six portfolio courses. Experience includes weather and quiz apps, a blogging platform with auth, e-commerce, and a social chat app. See Education for the full skill and coursework lists.",
     links: [
       { href: "#education", label: "Education" },
       {
@@ -237,10 +287,12 @@ export const chatTopics: ChatTopic[] = [
   {
     id: "contact",
     keywords: [
-      "contact",
+      "contact freddie",
+      "how do i contact",
+      "contact info",
       "email",
       "hire",
-      "reach",
+      "reach out",
       "linkedin",
       "github",
       "collaborate",
@@ -266,7 +318,7 @@ export const chatTopics: ChatTopic[] = [
       "menu",
     ],
     reply:
-      "This is a single-page portfolio. Jump with the nav or ask me: Experience, Work (products, games, Roblox, jams, Nunn Ops), Education & certifications, Skills, About, Contact. I reply with links you can click.",
+      "This profile follows a LinkedIn-style layout. Jump with the nav or ask me: About, Featured, Experience, Education, Licenses & certifications, Skills, Projects, Contact. I reply with links you can click.",
     links: fallbackLinks,
     suggestion: "How do I navigate this site?",
   },

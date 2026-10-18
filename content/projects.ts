@@ -17,8 +17,14 @@ export const projects: ProjectEntry[] = [
     category: "ops",
     status: "prototype",
     summary:
-      "Planning workspace for the proposed Nunn Applied Systems subsidiary under Nunn Corporation — registry, gaps, cadence, and presentations. Not a live product or corporate record.",
-    stack: ["Next.js", "TypeScript", "Evidence-labeled data", "Browser storage"],
+      "Planning workspace built as lead developer / co-founder work for proposed Nunn Applied Systems under Nunn Corporation — registry, gaps, cadence, and presentations. Not a live product or corporate record.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Evidence-labeled data",
+      "Browser storage",
+      "Corporate infrastructure",
+    ],
     href: nunnOpsRepoUrl,
     hrefLabel: "View on GitHub",
   },

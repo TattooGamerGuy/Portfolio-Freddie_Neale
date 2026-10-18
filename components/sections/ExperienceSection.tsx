@@ -1,85 +1,49 @@
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/Container";
+import { OrgMark } from "@/components/profile/OrgMark";
+import { ProfileCard } from "@/components/profile/ProfileCard";
 import { Separator } from "@/components/ui/separator";
 import { experience } from "@/content/experience";
 
 export function ExperienceSection() {
   return (
-    <Container
-      as="section"
-      id="experience"
-      className="scroll-mt-24 py-20 sm:py-24"
-    >
-      <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        Experience
-      </p>
-      <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-        Current roles and operating work.
-      </h2>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-        COO seat at Nunn Corporation and founder of Algorithm Academy — planning
-        workspace operations alongside product and game shipping.
-      </p>
-
-      <ol className="mt-12 space-y-0">
+    <ProfileCard id="experience" title="Experience">
+      <ul>
         {experience.map((entry, index) => (
-          <li key={entry.id} className="relative grid gap-4 py-8 sm:grid-cols-[7rem_1fr]">
-            {index > 0 ? (
-              <Separator className="absolute inset-x-0 top-0 sm:left-[7rem]" />
-            ) : null}
-            <div className="font-display text-sm font-semibold text-muted-foreground">
-              {entry.period}
-              {entry.current ? (
-                <Badge className="mt-2 block w-fit" variant="default">
-                  Current
-                </Badge>
-              ) : null}
-            </div>
-            <div>
-              <h3 className="font-display text-xl font-bold text-foreground">
-                {entry.title}
-              </h3>
-              <p className="mt-1 font-display text-sm font-semibold text-primary">
-                {entry.organization}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {entry.summary}
-              </p>
-              <ul className="mt-4 space-y-2">
-                {entry.highlights.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l-2 border-primary/40 pl-3 text-sm leading-relaxed text-muted-foreground"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              {entry.href ? (
-                <Button asChild variant="link" className="mt-3 h-auto px-0">
+          <li key={entry.id}>
+            {index > 0 ? <Separator className="my-4" /> : null}
+            <div className="flex gap-3">
+              <OrgMark label={entry.organization} />
+              <div className="min-w-0 flex-1">
+                <h3 className="font-display text-base font-semibold text-foreground">
+                  {entry.title}
+                </h3>
+                <p className="text-sm text-foreground">{entry.organization}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">
+                  {entry.period}
+                  {entry.current ? " · Current" : ""}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground">
+                  {entry.summary}
+                </p>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                  {entry.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                {entry.href ? (
                   <a
                     href={entry.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="mt-2 inline-block text-sm font-semibold text-primary hover:underline"
                   >
                     {entry.hrefLabel ?? "Learn more"} →
                   </a>
-                </Button>
-              ) : null}
+                ) : null}
+              </div>
             </div>
           </li>
         ))}
-      </ol>
-
-      <p className="mt-2 text-sm text-muted-foreground">
-        Prefer a guided walkthrough?{" "}
-        <Link href="#contact" className="font-semibold text-primary underline-offset-4 hover:underline">
-          Contact
-        </Link>{" "}
-        or open the Sentinel portfolio guide from the floating button.
-      </p>
-    </Container>
+      </ul>
+    </ProfileCard>
   );
 }

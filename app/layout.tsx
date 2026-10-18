@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Syne } from "next/font/google";
+import { Source_Sans_3, Syne } from "next/font/google";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { SITE_NAME, defaultMetadata } from "@/lib/site";
 import "./globals.css";
@@ -10,10 +10,10 @@ const syne = Syne({
   weight: ["500", "600", "700", "800"],
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${sourceSerif.variable} h-full antialiased`}
+      className={`${syne.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background font-body text-foreground">
         <SiteShell>{children}</SiteShell>

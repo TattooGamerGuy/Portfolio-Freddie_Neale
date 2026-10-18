@@ -31,6 +31,20 @@ Open [http://localhost:3005](http://localhost:3005).
 | `npm run build` | Production build |
 | `npm run start` | Serve production build |
 | `npm run lint` | ESLint |
+| `npm run test` | Vitest watch mode |
+| `npm run test:run` | Vitest single run (CI) |
+
+## Tests
+
+Vitest + Testing Library under `tests/`:
+
+- Content integrity (experience, education, certs, projects, jams, skills, featured)
+- Site constants and nav anchors
+- Portfolio Sentinel chat matcher / refusals
+- Claim and brand guards
+- `cn` utility
+- Sentinel open-event store
+- shadcn UI smoke (Button, Badge, Input, ProfileCard, OrgMark)
 
 ## Related apps
 
