@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+:root {
+  --fn-bg: #0c1118;
+  --fn-bg-elevated: #141b26;
+  --fn-ink: #e8eef6;
+  --fn-ink-muted: #9aa8bc;
+  --fn-line: #2a3548;
+  --fn-accent: #2dd4bf;
+  --fn-accent-warm: #d4a574;
+  --fn-brand: #e8eef6;
+
+  --fn-font-display: var(--font-syne), "Segoe UI", sans-serif;
+  --fn-font-body: var(--font-source-serif), Georgia, serif;
+
+  --fn-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --fn-duration-fast: 150ms;
+  --fn-duration: 300ms;
+
+  --background: var(--fn-bg);
+  --foreground: var(--fn-ink);
+  --card: var(--fn-bg-elevated);
+  --card-foreground: var(--fn-ink);
+  --popover: var(--fn-bg-elevated);
+  --popover-foreground: var(--fn-ink);
+  --primary: var(--fn-accent);
+  --primary-foreground: #0c1118;
+  --secondary: #1a2332;
+  --secondary-foreground: var(--fn-ink);
+  --muted: #1a2332;
+  --muted-foreground: var(--fn-ink-muted);
+  --accent: #1a2332;
+  --accent-foreground: var(--fn-ink);
+  --destructive: #ef4444;
+  --border: var(--fn-line);
+  --input: var(--fn-line);
+  --ring: var(--fn-accent);
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-fn-bg: var(--fn-bg);
+  --color-fn-bg-elevated: var(--fn-bg-elevated);
+  --color-fn-ink: var(--fn-ink);
+  --color-fn-ink-muted: var(--fn-ink-muted);
+  --color-fn-line: var(--fn-line);
+  --color-fn-accent: var(--fn-accent);
+  --color-fn-accent-warm: var(--fn-accent-warm);
+  --color-fn-brand: var(--fn-brand);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-display: var(--fn-font-display);
+  --font-body: var(--fn-font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--fn-bg);
+  color: var(--fn-ink);
+  font-family: var(--fn-font-body);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 80% -10%, rgba(45, 212, 191, 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 20%, rgba(212, 165, 116, 0.08), transparent 50%),
+    linear-gradient(165deg, #0e1520 0%, var(--fn-bg) 45%, #0a1016 100%),
+    linear-gradient(rgba(232, 238, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 238, 246, 0.03) 1px, transparent 1px);
+  background-size: auto, auto, auto, 48px 48px, 48px 48px;
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fn-accent);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--fn-font-display);
+}
+
+.font-body {
+  font-family: var(--fn-font-body);
+}
+
+@keyframes fn-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.85rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fn-hero-shift {
+  from {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fn-animate-in {
+  animation: fn-fade-up var(--fn-duration) var(--fn-ease) both;
+}
+
+.fn-animate-in-delay {
+  animation: fn-fade-up calc(var(--fn-duration) + 80ms) var(--fn-ease) 120ms
+    both;
+}
+
+.fn-animate-in-delay-2 {
+  animation: fn-fade-up calc(var(--fn-duration) + 80ms) var(--fn-ease) 220ms
+    both;
+}
+
+.fn-hero-visual {
+  animation: fn-hero-shift 1.5s var(--fn-ease) both;
+}
+
+.fn-cta {
+  transition:
+    background-color var(--fn-duration-fast) var(--fn-ease),
+    color var(--fn-duration-fast) var(--fn-ease),
+    border-color var(--fn-duration-fast) var(--fn-ease),
+    transform var(--fn-duration-fast) var(--fn-ease);
+}
+
+.fn-cta:hover {
+  transform: translateY(-1px);
+}
+
+.fn-nav-link {
+  transition: color var(--fn-duration-fast) var(--fn-ease);
+}
+
+.fn-nav-link:hover {
+  color: var(--fn-accent);
+}
+
+.fn-project-card {
+  transition:
+    border-color var(--fn-duration) var(--fn-ease),
+    transform var(--fn-duration) var(--fn-ease),
+    background-color var(--fn-duration) var(--fn-ease);
+}
+
+.fn-project-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(45, 212, 191, 0.45);
+  background-color: rgba(20, 27, 38, 0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fn-animate-in,
+  .fn-animate-in-delay,
+  .fn-animate-in-delay-2,
+  .fn-hero-visual {
+    animation: none;
+  }
+
+  .fn-cta:hover,
+  .fn-project-card:hover {
+    transform: none;
+  }
+}
